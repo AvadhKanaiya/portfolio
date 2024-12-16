@@ -1,6 +1,14 @@
 import React from "react";
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "./components/ui/card";
+import { Github, Globe } from "lucide-react";
+
 const projectsData = [
   {
     title: "Job Portal",
@@ -9,15 +17,15 @@ const projectsData = [
       "This is one stop solution for both recruiter as well as candidate to find the best job and best candidate respectively.",
     techstack:
       "React.js, Express.js, MongoDB, Tailwind CSS, Shadcn, JWT, Bcrypt, Axios, React-Router-Dom, React-Toastify",
-    // github: "#",
-    // live: "#",
+    image: "jobportal.png",
   },
   {
     title: "Short Me",
     status: "Completed",
     description:
       "Developed a smart and user-friendly custom Chrome extension to streamline the process of URL shortening.",
-    techstack: "HTML, Bootstrap, Javascript, MongoDB, Express.js ",
+    techstack: "HTML, Bootstrap, Javascript, MongoDB, Express.js",
+    image: "shortme.png",
     github: "https://github.com/AvadhKanaiya/shortme",
     live: "https://shortme-documentation.vercel.app/",
   },
@@ -27,17 +35,9 @@ const projectsData = [
     description:
       "A basic multiplayer coin picker game where you can play with your friends and family. You can change your name and also you can change the color of your character",
     techstack: "HTML, CSS, Javascript, Firebase",
+    image: "coinadgepicker.png",
     github: "https://github.com/AvadhKanaiya/Multiplayer-Coin-Picker",
     live: "https://coinagepicker.netlify.app/",
-  },
-  {
-    title: "Face Link",
-    status: "Completed",
-    description:
-      "Developed a basic video calling website leveraging WebRTC for real-time communication, enabling high-quality audio and video calls directly in the browser",
-    techstack: "React.js, Express.js, WebRTC, WebScoket",
-    github: "https://github.com/AvadhKanaiya/FaceLink",
-    // live: "#",
   },
   {
     title: "Git Details",
@@ -45,59 +45,107 @@ const projectsData = [
     description:
       "Developed a user friendly platform to get the details of any github user. You can get the details of any user by just entering the name or initials of the user.",
     techstack: "React.js, Tailwind CSS, Shadcn, Firebase, GitHub API",
+    image: "gitdetails.png",
     github: "https://github.com/AvadhKanaiya/GitDetails",
     live: "https://gitdetails.vercel.app/",
   },
+  {
+    title: "Socio Holic",
+    status: "Completed",
+    description:
+      "Developed social media website where you can post, like and comment on the posts. You can also follow and unfollow the users.",
+    techstack:
+      "React.js, React-Router, Tailwind CSS, Material UI, MongoDB, Express.js",
+    image: "socioholic.png",
+    github: "https://github.com/AvadhKanaiya/social_media_app",
+  },
+  {
+    title: "Hotel Booking System",
+    status: "Completed",
+    description:
+      "Developed an online hotel room booking system where admin can manage the rooms and users can book the rooms.",
+    techstack: "HTML, CSS, Bootstrap, Javascript, PHP, MySQL",
+    image: "hotelbookingsystem.png",
+    github: "https://github.com/AvadhKanaiya/Online_Hotel_Booking_System",
+  },
 ];
-const Projects = () => {
+
+function Projects() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-32">
-      <div className="flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 mt-12">
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-32 mb-10">
+      <h2 className="text-3xl font-bold text-center mt-10 mb-12 font-heading">
+        Featured Projects
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectsData.map((project, index) => (
-          <div className="mb-14 p-5 border rounded-md" key={index}>
-            <div className="flex gap-x-5">
-              <p className="font-heading font-bold text-lg sm:text-xl underline">
-                Title: {project.title}
+          <Card
+            key={index}
+            className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <CardHeader className="p-0">
+              <div className="relative h-48 w-full overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-fill transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute top-2 right-2">
+                  <Badge
+                    variant="secondary"
+                    className="bg-background/80 backdrop-blur-sm"
+                  >
+                    {project.status}
+                  </Badge>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="flex-grow p-6">
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-muted-foreground mb-4 line-clamp-3">
+                {project.description}
               </p>
-              <Badge>Status: {project.status}</Badge>
-            </div>
-            <p className="font-heading mt-3">
-              <span className="underline font-bold"> Description:</span>{" "}
-              <span className="font-heading">{project.description}</span>
-            </p>
-            <p className="font-heading mt-3">
-              <span className="underline font-bold"> Tech Stack:</span>{" "}
-              <span className="font-heading">{project.techstack}</span>
-            </p>
-            <div className="mt-3 gap-x-2 flex">
-              {project.github ? (
-                <Button>
-                  <a href={project.github} target="_blank">
-                    GITHUB
+              <div className="space-y-2">
+                <h4 className="font-semibold text-sm">Tech Stack:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.techstack.split(",").map((tech, i) => (
+                    <Badge key={i} variant="outline" className="bg-primary/5">
+                      {tech.trim()}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter className="p-6 pt-0 gap-4">
+              {project.github && (
+                <Button variant="outline" className="flex-1" asChild>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="w-4 h-4 mr-2" />
+                    GitHub
                   </a>
                 </Button>
-              ) : (
-                <Button variant="link" disabled>
-                  Upcoming GITHUB..
-                </Button>
               )}
-              {project.live ? (
-                <Button>
-                  <a href={project.live} target="_blank">
-                    Live
+              {project.live && (
+                <Button className="flex-1" asChild>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Globe className="w-4 h-4 mr-2" />
+                    Live Demo
                   </a>
                 </Button>
-              ) : (
-                <Button variant="link" disabled>
-                  Upcoming Live..
-                </Button>
               )}
-            </div>
-          </div>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default Projects;

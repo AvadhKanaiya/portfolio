@@ -24,6 +24,9 @@ const experienceData = [
 const Experience = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-32">
+      <h2 className="text-3xl font-bold text-center mt-10 font-heading">
+        Experience
+      </h2>
       <div className="flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 mt-12">
         {experienceData.map((experience, index) => (
           <Card className="mb-12" key={index}>

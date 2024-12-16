@@ -7,21 +7,21 @@ const educationData = [
     qualification: "Bachelor Of Technology in Computer Engineering",
     university: "CHARUSAT",
     CGPA: 8.2,
-    Journey: "2022 - 2025",
+    Journey: "2022/25",
     Acheivment: "Upcoming..",
   },
   {
     qualification: "Diploma in Computer Engineering",
     university: "GTU",
     CGPA: 9.36,
-    Journey: "2018 - 2022",
+    Journey: "2019/22",
     Acheivment: "I got certified for achieving 7th rank in my college 🌟",
   },
   {
     qualification: "SSC - class 10",
     university: "MODI SCHOOL",
     CGPA: "87%",
-    Journey: 2018,
+    Journey: "2018/19",
     Acheivment: "I got awarded for my grades in class 10 🌟",
   },
 ];
@@ -29,10 +29,13 @@ const educationData = [
 const Education = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-32">
+      <h2 className="text-3xl font-bold text-center py-10 font-heading">
+        Educational Journey
+      </h2>
       <div className="flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 mt-12">
         {educationData.map((qualification, index) => (
           <div
-            className="mb-16 hover:scale-95 transition-all duration-300"
+            className="mb-16 hover:scale-105 transition-all duration-300"
             key={index}
           >
             <p className="font-heading text-lg sm:text-xl border-b-2">
