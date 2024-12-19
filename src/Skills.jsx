@@ -1,28 +1,25 @@
 import React from "react";
-import { Card, CardHeader, CardTitle } from "./components/ui/card";
-import { cn } from "./lib/utils";
-import { Badge } from "./components/ui/badge";
-import { Button } from "./components/ui/button";
+import IconCloud from "./components/ui/icon-cloud";
 
 const skillsData = [
-  "C++",
-  "JavaScript",
-  "PHP",
-  "MYSQL",
-  "MongoDB",
-  "Firebase",
-  "Laravel",
-  "Codeigniter",
-  "JQuery",
-  "Node.js",
-  "Express.js",
-  "React.js",
-  "CSS",
-  "Tailwind CSS",
-  "Bootstrap",
-  "Git",
-  "Github",
-  "Postman",
+  "cplusplus",
+  "php",
+  "mysql",
+  "mongodb",
+  "firebase",
+  "laravel",
+  "codeigniter",
+  "jquery",
+  "nodedotjs",
+  "express",
+  "react",
+  "css3",
+  "tailwindcss",
+  "bootstrap",
+  "git",
+  "github",
+  "postman",
+  "javascript",
 ];
 
 const Skills = () => {
@@ -32,11 +29,7 @@ const Skills = () => {
         Skills
       </h2>
       <div className="flex flex-wrap gap-6 justify-center">
-        {skillsData.map((skill, index) => (
-          <Button variant="outline" key={index}>
-            {skill}
-          </Button>
-        ))}
+        <IconCloud iconSlugs={skillsData} maxSpee />
       </div>
     </div>
   );
