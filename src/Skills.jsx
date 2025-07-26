@@ -1,7 +1,6 @@
-import React from "react";
-import IconCloud from "./components/ui/icon-cloud";
+import { IconCloud } from "@/components/magicui/icon-cloud";
 
-const skillsData = [
+const slugs = [
   "cplusplus",
   "php",
   "mysql",
@@ -22,17 +21,14 @@ const skillsData = [
   "javascript",
 ];
 
-const Skills = () => {
+export default function Skills() {
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
+  );
+
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-12">
-      <h2 className="text-3xl font-bold text-center mt-2 mb-12 font-heading">
-        Skills
-      </h2>
-      <div className="flex flex-wrap gap-6 justify-center">
-        <IconCloud iconSlugs={skillsData} maxSpee />
-      </div>
+    <div className="relative flex size-full items-center justify-center overflow-hidden">
+      <IconCloud images={images} />
     </div>
   );
-};
-
-export default Skills;
+}

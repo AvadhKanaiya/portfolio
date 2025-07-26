@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
@@ -37,9 +37,7 @@ export const renderCustomIcon = (icon, theme) => {
 
   return renderSimpleIcon({
     icon,
-    bgHex,
-    fallbackHex,
-    minContrastRatio,
+    hex: `#${icon.hex}`, // ✅ use brand color
     size: 42,
     aProps: {
       href: undefined,
@@ -50,9 +48,7 @@ export const renderCustomIcon = (icon, theme) => {
   });
 };
 
-export default function IconCloud({
-  iconSlugs
-}) {
+export default function IconCloud({ iconSlugs }) {
   const [data, setData] = useState(null);
   const { theme } = useTheme();
 
@@ -64,13 +60,14 @@ export default function IconCloud({
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"));
+      renderCustomIcon(icon, theme || "light")
+    );
   }, [data, theme]);
 
   return (
     // @ts-ignore
-    (<Cloud {...cloudProps}>
+    <Cloud {...cloudProps}>
       <>{renderedIcons}</>
-    </Cloud>)
+    </Cloud>
   );
 }
